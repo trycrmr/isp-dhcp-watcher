@@ -1,0 +1,29 @@
+{
+  "name": "isp-dhcp-watcher",
+  "version": "0.0.1",
+  "description": "Watches for changes to the public IP of your network by your ISP, and, optionally, updates a DNS record.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trycrmr/isp-dhcp-watcher.git"
+  },
+  "keywords": [
+    "ip",
+    "isp",
+    "dhcp",
+    "node",
+    "node.js",
+    "dynamic"
+  ],
+  "author": "trycrmr",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/trycrmr/isp-dhcp-watcher/issues"
+  },
+  "homepage": "https://github.com/trycrmr/isp-dhcp-watcher#readme"
+}
