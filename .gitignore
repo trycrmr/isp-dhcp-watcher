@@ -1,3 +1,6 @@
+# isp-dhcp-watcher specific things to ignore
+configs/
+
 # Logs
 logs
 *.log
