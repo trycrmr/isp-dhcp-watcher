@@ -1,5 +1,7 @@
-import usingNode13 from './app-utils/node13Check/index.js'
-import http, { request } from 'http'
+import http from 'http'
+
+import usingNode13 from './appUtils/node13Check/index.js'
+import checkPublicIP from './appUtils/checkPublicIP/index.js'
 
 import runTests from './test/index.js'
 import tests from './test/tests.js'
@@ -14,7 +16,6 @@ const ISPDHCPWatcher = async () => {
       if(!(usingNode13())) {
         reject('This script was written to use Node 13. Please use Node 13 or submit a PR for another version of Node.')
       } else {
-        // resolve('running ISPDHCPWatcher')
         let handleResponse = ((thisResponse) => {
           if(thisResponse instanceof Error)
             reject(thisResponse)
