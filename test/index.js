@@ -27,7 +27,7 @@ const runTest = async function(thisFuncToTest, expectedResult, funcArgs) {
       reject({ // error case, function to test errored
         isPass: false,
         expected: expectedResult,
-        result: err,
+        result: new Error(`${err.toString()}`),
         isError: true,
       })
     })

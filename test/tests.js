@@ -1,5 +1,5 @@
 const tests = [
-  { args: [], expected: 'running ISPDHCPWatcher' }
+  { args: [], expected: '73.163.36.7' }
 ]
 
 export default tests
