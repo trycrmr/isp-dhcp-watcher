@@ -7,7 +7,7 @@ const runTest = async function(thisFuncToTest, expectedResult, funcArgs) {
 
     thisFuncToTest(...funcArgs)
     .then(result => {
-      if(result === expectedResult) {
+      if(JSON.stringify(result) === JSON.stringify(expectedResult)) {
         resolve({ // test passed
           isPass: true,
           expected: expectedResult,

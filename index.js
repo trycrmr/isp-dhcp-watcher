@@ -9,25 +9,38 @@ import tests from './test/tests.js'
 const NETWORK_TIMEOUT_THRESHOLD_MS = 1000
 const URL_FOR_IP_CHECK = 'http://ipecho.net/plain'
 
+
+class State {
+  constructor(initialState = { currentPublicIP: undefined, lastPublicIP: undefined }) {
+    state: initialState
+  }
+
+  getState = () => { return this.state }
+  setState = (newState) => { 
+    this.state = { ...this.state, ...newState }
+    return this.getState()
+  }
+}
+
 const ISPDHCPWatcher = async () => {
   try {
     if(!(usingNode13())) return new Error('This script was written to use Node 13. Please use Node 13 or submit a PR for another version of Node.')
 
-    const currentPublicIP = await checkPublicIP(URL_FOR_IP_CHECK, { timeout: NETWORK_TIMEOUT_THRESHOLD_MS })
-    return currentPublicIP
+    const state = new State()
+
+    let currentPublicIP = await checkPublicIP(URL_FOR_IP_CHECK, { timeout: NETWORK_TIMEOUT_THRESHOLD_MS })
+    return state.setState({ currentPublicIP })
   } catch(err) {
     return err
   }
 }
-
-export default ISPDHCPWatcher
 
 switch(process.argv[2]) {
   case 'test': 
     console.log('running tests')
 
     runTests(ISPDHCPWatcher, tests)
-    .then(results => console.log(results))
+    .then(results => console.log(JSON.stringify(results, null, 2)))
     .catch(err => console.log(err))
     .finally(() => process.exit)
     
@@ -38,3 +51,5 @@ switch(process.argv[2]) {
     .catch(err => console.log(err))
     .finally(() => process.exit)
 }
+
+export default ISPDHCPWatcher
