@@ -1,6 +1,9 @@
 # isp-dhcp-watcher specific things to ignore
 configs/
 
+# Editors
+.vscode/
+
 # Logs
 logs
 *.log
