@@ -14,7 +14,6 @@ TODOs
           pause pinging for IP changes (?necessary?)
           update aws route 53 DNS record with the new IP
             if that fails, email me?
-            if that is successful, resume the intervals, and email me?
         
         2 if the IP hasn't changed for 8640 tries (presuming a ping interval every 10 seconds), email me that it hasn't, break the loop, and recursively call the function to start checking the IP again. This will provide me a daily update that the script is still working and keep the variable counting the loops from getting really long and eventually breaking. 
 
@@ -26,4 +25,6 @@ TODOs
 
         2.5 Hide the appropriate configs. Use an AWS key with limited privledges (obvi) and email from something@terrycreamer.codes using AWS SES .
         
+
+        Maybe increase the network timeout to a limit, then decrease the network timeout to a bottom limit with successful calls. Only email if the top network timeout threshold is met. 
         */
